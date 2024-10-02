@@ -10,9 +10,29 @@
 //----------------------------------------------------------
 
 void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out) {
-  // -----------------------------
-  // YOUR CODE GOES HERE
-  // -----------------------------
+  digit test_dig;
+
+  // ------------------------------------------------------
+  // Input processing
+  // ------------------------------------------------------
+  // Read the two input 32-bit words (low word first)
+  bit32_t input_lo = strm_in.read();
+  bit32_t input_hi = strm_in.read();
+
+  // Convert input raw bits to fixed-point representation via bit slicing
+  test_dig(31, 0) = input_lo;
+  test_dig(test_dig.length()-1, 32) = input_hi;
+
+  // ------------------------------------------------------
+  // Call digitrec()
+  // ------------------------------------------------------
+  bit4_t label = digitrec(test_dig);
+
+  // ------------------------------------------------------
+  // Output processing
+  // ------------------------------------------------------
+  // Write out the label
+  strm_out.write(label);
 }
 
 //----------------------------------------------------------
@@ -70,9 +90,14 @@ void update_knn(digit test_inst, digit train_inst,
     dist += diff[i];
   }
 
-  // -----------------------------
-  // YOUR CODE GOES HERE
-  // -----------------------------
+  // Get index of max in array
+  bit4_t max_idx = 0;
+  search_max: for (int i = 1; i < K_CONST; i++) {
+    if (min_distances[i] > min_distances[max_idx]) max_idx = i;
+  }
+
+  // Replace prev max with new value if is less than max in array
+  if (min_distances[max_idx] > dist) min_distances[max_idx] = dist;
 }
 
 
@@ -87,12 +112,12 @@ void update_knn(digit test_inst, digit train_inst,
 // @param[out] : sorted_labels - the corresponding labels of the sorted distances
 
 void sort_knn(
-  bit6 knn_set[10][K_CONST],
-  bit6 sorted_distances[10*K_CONST],
-  bit4 sorted_labels[10*K_CONST]
+  bit6_t knn_set[10][K_CONST],
+  bit6_t sorted_distances[10*K_CONST],
+  bit4_t sorted_labels[10*K_CONST]
 ) {
   // flatten knn_set into 1-d arrays
-  flatten_outer:for (bit4 i = 0; i < 10; i++) {
+  flatten_outer:for (bit4_t i = 0; i < 10; i++) {
     flatten_inner:for (int j = 0; j < K_CONST; j++) {
       sorted_distances[i * K_CONST + j] = knn_set[i][j];
       sorted_labels[i * K_CONST + j] = i;
@@ -104,8 +129,8 @@ void sort_knn(
   bubble_outer: for (int i = 0; i < NUM_ENTRIES; i++) {
     bubble_inner: for (int j = 0; j < NUM_ENTRIES - 1; j++) {
       if (sorted_distances[j] > sorted_distances[j+1]) {
-        bit6 t = sorted_distances[j+1];
-        bit4 l = sorted_labels[j+1];
+        bit6_t t = sorted_distances[j+1];
+        bit4_t l = sorted_labels[j+1];
         sorted_distances[j+1] = sorted_distances[j];
         sorted_labels[j+1] = sorted_labels[j];
         sorted_distances[j] = t;
@@ -128,12 +153,35 @@ void sort_knn(
 //
 
 bit4_t knn_vote(bit6_t knn_set[10][K_CONST]) {
-  bit6 sorted_distances[10*K_CONST];
-  bit4 sorted_labels[10*K_CONST];
+  bit6_t sorted_distances[10*K_CONST];
+  bit4_t sorted_labels[10*K_CONST];
 
   sort_knn(knn_set, sorted_distances, sorted_labels);
 
-  // -----------------------------
-  // YOUR CODE GOES HERE
-  // -----------------------------
+  // Get frequencies of first K_CONST distances in sorted_distances
+  // Frequency algorithm reference: https://www.w3resource.com/c-programming-exercises/array/c-array-exercise-8.php
+  bit4_t freqs[K_CONST];
+  freqs_init: for (int i = 0; i < K_CONST; i++) {
+    freqs[i] = -1;
+  }
+  
+  bit4_t local_cnt = 1;
+  get_freqs_outer: for (int i = 0; i < K_CONST; i++) {
+    local_cnt = 1;
+    get_freqs_inner: for (int j = i + 1; j < K_CONST; j++) {
+      if (sorted_labels[i] == sorted_labels[j]) {
+        local_cnt++;
+        freqs[j] = 0; // Already accounted for this frequency
+      }
+    }
+    if (freqs[i] != 0) freqs[i] = local_cnt;
+  }
+
+  // Get label with highest frequency in array
+  bit4_t max_idx = 0;
+  search_max: for (int i = 1; i < K_CONST; i++) {
+    if (freqs[i] > freqs[max_idx]) max_idx = i;
+  }
+
+  return sorted_labels[max_idx];
 }

@@ -83,10 +83,35 @@ int main(int argc, char **argv) {
 
   timer.start();
 
-  //--------------------------------------------------------------------
-  // Add your code here to communicate with the hardware module and
-  // write the outputs to results[]
-  //--------------------------------------------------------------------
+  //----------------------------------------------------------------------
+  // Send all values to the module
+  //----------------------------------------------------------------------
+  for (int i = 1; i < N; ++i) {
+    digit dummy_dig;
+
+    // Convert fixed-point to int64
+    bit64_t double_dig;
+    double_dig(dummy_dig.length()-1,0) = inputs[i](dummy_dig.length()-1,0);
+    int64_t input = double_dig;
+
+    // Send bytes through the write channel
+    // and assert that the right number of bytes were sent
+    nbytes = write (fdw, (void*)&input, sizeof(input));
+    assert (nbytes == sizeof(input));
+  }
+
+  //----------------------------------------------------------------------
+  // Read all results
+  //----------------------------------------------------------------------
+  for (int i = 1; i < N; ++i) {
+    // Receive bytes through the read channel
+    // and assert that the right number of bytes were recieved
+    int label_out;
+    nbytes = read (fdr, (void*)&label_out, sizeof(label_out));
+    assert (nbytes == sizeof(label_out));
+    
+    results[i] = label_out;
+  }
 
   timer.stop();
 
