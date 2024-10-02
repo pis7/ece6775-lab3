@@ -1,0 +1,59 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'digitrec'" level="0">
+<item name = "Date">Wed Oct  2 02:45:02 2024
+</item>
+<item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
+<item name = "Project">digitrec.prj</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020-clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">10.00 ns, 7.307 ns, 1.25 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">103624, 103636, 1.036 ms, 1.036 ms, 103624, 103636, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_knn_vote_fu_670">knn_vote, 2741, 2753, 27.410 us, 27.530 us, 2741, 2753, none</column>
+<column name="grp_update_knn_fu_734">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_752">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_770">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_788">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_806">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_824">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_842">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_861">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_879">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+<column name="grp_update_knn_fu_897">update_knn, 53, 53, 0.530 us, 0.530 us, 53, 53, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">80, 80, 8, -, -, 10, no</column>
+<column name=" + Loop 1.1">6, 6, 2, -, -, 3, no</column>
+<column name="- LOOP_I_1800">100800, 100800, 56, -, -, 1800, no</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

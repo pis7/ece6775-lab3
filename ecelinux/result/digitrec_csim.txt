@@ -1,3 +1,3 @@
 Number of test instances = 180
 Overall Error Rate = 6.67%
-digitrec FPGA       :      1 calls; 11956.099 msecs total time
+digitrec FPGA       :      1 calls; 11895.641 msecs total time

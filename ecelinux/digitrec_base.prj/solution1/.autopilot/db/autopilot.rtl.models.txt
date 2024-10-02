@@ -1,0 +1,9 @@
+dut_mux_32_4_1_1
+knn_vote_sorted_dbkb
+knn_vote_sorted_lcud
+digitrec_trainingdEe
+digitrec_knn_set_V
+sort_knn
+knn_vote
+digitrec
+dut

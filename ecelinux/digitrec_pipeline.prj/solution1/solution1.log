@@ -1,0 +1,93 @@
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'digitrec.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:35 ; elapsed = 00:00:39 . Memory (MB): peak = 1168.148 ; gain = 530.125 ; free physical = 4699 ; free virtual = 22139
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:35 ; elapsed = 00:00:39 . Memory (MB): peak = 1168.148 ; gain = 530.125 ; free physical = 4699 ; free virtual = 22139
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'update_knn' into 'digitrec' (digitrec.cpp:63).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:36 ; elapsed = 00:00:41 . Memory (MB): peak = 1168.148 ; gain = 530.125 ; free physical = 4671 ; free virtual = 22113
+INFO: [HLS 200-10] Checking synthesizability ...
+WARNING: [SYNCHK 200-23] digitrec.cpp:90: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:36 ; elapsed = 00:00:41 . Memory (MB): peak = 1169.430 ; gain = 531.406 ; free physical = 4664 ; free virtual = 22106
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'LOOP_I_1800' (digitrec.cpp:57) in function 'digitrec' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'LOOP_J_10' (digitrec.cpp:59) in function 'digitrec' completely with a factor of 10.
+INFO: [HLS 200-489] Unrolling loop 'popcount' (digitrec.cpp:89) in function 'digitrec' completely with a factor of 49.
+INFO: [HLS 200-489] Unrolling loop 'search_max' (digitrec.cpp:95) in function 'digitrec' completely with a factor of 2.
+INFO: [XFORM 203-102] Partitioning array 'training_data.V' in dimension 1 automatically.
+INFO: [XFORM 203-102] Automatically partitioning small array 'freqs.V' (digitrec.cpp:163) completely based on array size.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'freqs.V' (digitrec.cpp:163) in dimension 1 completely.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.0' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.1' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.2' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.3' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.4' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.5' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.6' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.7' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.8' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-102] Automatically partitioning small array 'knn_set.V.9' (digitrec.cpp:48) completely based on array size.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.0' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.1' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.2' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.3' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.4' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.5' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.6' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.7' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.8' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'knn_set.V.9' (digitrec.cpp:48) in dimension 1 completely.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (digitrec.cpp:171:55) in function 'knn_vote'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (digitrec.cpp:177:9) to (digitrec.cpp:169:43) in function 'knn_vote'... converting 7 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'digitrec' (digitrec.cpp:51:52)...950 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:40 ; elapsed = 00:00:45 . Memory (MB): peak = 1171.410 ; gain = 533.387 ; free physical = 4636 ; free virtual = 22080
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_distances.V' (digitrec.cpp:122:45)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_labels.V' (digitrec.cpp:123:21)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_distances.V' (digitrec.cpp:134:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_labels.V' (digitrec.cpp:135:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_distances.V' (digitrec.cpp:136:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'sorted_labels.V' (digitrec.cpp:137:9)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1171.410 ; gain = 533.387 ; free physical = 4601 ; free virtual = 22045
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'dut' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'sort_knn' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 48.26 seconds; current allocated memory: 202.494 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.33 seconds; current allocated memory: 202.945 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'knn_vote' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.42 seconds; current allocated memory: 203.321 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.46 seconds; current allocated memory: 203.937 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'digitrec' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOOP_I_1800'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 4.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.23 seconds; current allocated memory: 209.251 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101]
