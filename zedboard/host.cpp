@@ -89,7 +89,7 @@ int main(int argc, char **argv) {
   for (int i = 1; i < N; ++i) {
     digit dummy_dig;
 
-    // Convert fixed-point to int64
+    // Convert arbitrary-precision to int64
     bit64_t double_dig;
     double_dig(dummy_dig.length()-1,0) = inputs[i](dummy_dig.length()-1,0);
     int64_t input = double_dig;

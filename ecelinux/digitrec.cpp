@@ -19,7 +19,7 @@ void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out) {
   bit32_t input_lo = strm_in.read();
   bit32_t input_hi = strm_in.read();
 
-  // Convert input raw bits to fixed-point representation via bit slicing
+  // Convert input raw bits to arbitrary-precision representation via bit slicing
   test_dig(31, 0) = input_lo;
   test_dig(test_dig.length()-1, 32) = input_hi;
 
